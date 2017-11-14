@@ -19,7 +19,7 @@ Sample code that implements the decoder assignment for the STM32F411 Nucleo MCU.
 Cycle counting is done by enabling the DWT register on the board and reading the cycle counter twice--once before `decode` and once more after. This gives us the amount of cycles required to decode the string.
 
 |Cycles|Release|String|
-|---------------------|
+|-----:|:-----:|:-----|
 |174140|No     |DECODE|
 |11590 |Yes    |DECODE|
 |4276  |No     |ABC   |
