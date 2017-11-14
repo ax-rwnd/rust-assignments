@@ -14,3 +14,13 @@ Sample code that implements the decoder assignment for the STM32F411 Nucleo MCU.
 3. Generate headers from the .svd: `svd2rust -i STM32F411.svd | rustfmt | tee src/lib.rs` 
 4. Build for your bare-metal platform `xargo build --target=thumbv7m-none-eabi`
 5. Start up OpenOCD for your target, connect with `arm-none-eabi-gdb` and `continue` to see the amount of cycles used together with the decoded string.
+
+### Counting cycles
+Cycle counting is done by enabling the DWT register on the board and reading the cycle counter twice--once before `decode` and once more after. This gives us the amount of cycles required to decode the string.
+
+|Cycles|Release|String|
+|---------------------|
+|174140|No     |DECODE|
+|11590 |Yes    |DECODE|
+|4276  |No     |ABC   |
+|326(!)|Yes    |ABC   |
