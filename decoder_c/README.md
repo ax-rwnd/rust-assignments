@@ -18,3 +18,5 @@ note: Run with `RUST_BACKTRACE=1` for a backtrace.
 
 shell returned 101
 ```
+# What happens if the null terminators are removed?
+The same thing; By the rust memory model, mutable slices are borrowed from the two arrays while removing one for each recursion.
